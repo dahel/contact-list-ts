@@ -2,20 +2,24 @@ import type { AnyAction } from 'redux';
 import { SET_CONTACTS_LOADING, SET_CONTACTS_DATA, SET_ITEM_SELECT } from '../actions/contacts.actions';
 import type { IContactStateItem } from 'src/types/contactInfo';
 
-const initialState: any = {
-  pending: false,
-  page: 1,
-  itemsPerPage: 10,
+export interface IContactsState {
+  items: IContactStateItem[];
+  loading: boolean;
+}
+
+const initialState: IContactsState = {
+  loading: false,
   items: [],
 };
 
-export default function app(state = initialState, action: AnyAction = {} as AnyAction) {
+export default function contacts(state = initialState, action: AnyAction = {} as AnyAction): IContactsState {
   switch (action.type) {
     case SET_CONTACTS_LOADING:
-      console.log(`############################## SET_CONTACTS_LOADING`, action);
-      return state;
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case SET_CONTACTS_DATA:
-      console.log(`############################## SET_CONTACTS_DATA`, action);
       return {
         ...state,
         items: [...state.items, ...action.payload],
