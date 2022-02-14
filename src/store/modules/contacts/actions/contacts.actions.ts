@@ -23,11 +23,9 @@ export const contacts = (ipAddress: string) => {
     dispatch(setContactsLoading(true));
 
     try {
-      // 
+      //
 
-      dispatch(
-        setContactsData({}),
-      );
+      dispatch(setContactsData({}));
     } catch (error) {
       dispatch(setContactsLoading(false));
     }
