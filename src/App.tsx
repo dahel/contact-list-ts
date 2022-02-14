@@ -1,15 +1,19 @@
-import React from "react";
+import { useState } from "react";
+import { Provider } from 'react-redux';
 import apiData from "./api";
 import PersonInfo from "./PersonInfo";
+import store from './store/store';
 
 function App() {
-  const [data, setData] = React.useState([]);
-  const [selected, setSelected] = React.useState([]);
+  const [data, setData] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [currentPage] = useState(1);
 
   //  TODO fetch contacts using apiData function, handle loading and error states
 
   return (
-    <div className="App">
+    <Provider store={store}>
+        <div className="App">
       <div className="selected">Selected contacts: {selected.length}</div>
       <div className="list">
         {data.map((personInfo) => (
@@ -18,6 +22,8 @@ function App() {
         ))}
       </div>
     </div>
+    </Provider>
+  
   );
 }
 
