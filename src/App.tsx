@@ -1,25 +1,17 @@
 import { useState } from 'react';
 import { Provider } from 'react-redux';
 import apiData from './api';
-import PersonInfo from './PersonInfo';
+import PersonInfo from './pages/contactsList/components/personInfo/PersonInfo';
 import store from './store/store';
+import ContactsList from './pages/contactsList/ContactsList';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [selected, setSelected] = useState([]);
-  const [currentPage] = useState(1);
-
   //  TODO fetch contacts using apiData function, handle loading and error states
 
   return (
     <Provider store={store}>
       <div className="App">
-        <div className="selected">Selected contacts: {selected.length}</div>
-        <div className="list">
-          {data.map((personInfo: any) => (
-            <PersonInfo key={personInfo.id} data={personInfo} />
-          ))}
-        </div>
+        <ContactsList />
       </div>
     </Provider>
   );
