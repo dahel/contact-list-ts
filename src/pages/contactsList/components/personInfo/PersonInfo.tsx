@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import styled from 'styled-components';
-import type { IContactInfo } from 'src/types/contactInfo';
 import NameBadge from '../nameBadge/NameBadge';
 
 const Wrapper = styled.div`
@@ -12,12 +11,13 @@ const Wrapper = styled.div`
   box-shadow: 0px 1px 2px 0px #cecece;
   margin: 10px 0;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   width: 300px;
-  background-color: ${({ selected }: { selected: boolean }) => (selected ? 'pink' : '#fff')};
+  background-color: #fff;
+  border-color: ${({ selected }: { selected: boolean }) => (selected ? 'grey' : 'transparent')};
 
   &:hover {
-    border: 2px solid pink;
+    border: 3px solid pink;
     box-shadow: 0px 1px 2px 0px pink;
   }
 `;

@@ -1,14 +1,16 @@
 import type { AnyAction } from 'redux';
-import { SET_CONTACTS_LOADING, SET_CONTACTS_DATA, SET_ITEM_SELECT } from '../actions/contacts.actions';
+import { SET_CONTACTS_LOADING, SET_CONTACTS_DATA, SET_ITEM_SELECT, SET_FETCH_ERROR } from '../actions/contacts.actions';
 import type { IContactStateItem } from 'src/types/contactInfo';
 
 export interface IContactsState {
-  items: IContactStateItem[];
   loading: boolean;
+  fetchErrorMessage: '';
+  items: IContactStateItem[];
 }
 
 const initialState: IContactsState = {
   loading: false,
+  fetchErrorMessage: '',
   items: [],
 };
 
@@ -38,6 +40,11 @@ export default function contacts(state = initialState, action: AnyAction = {} as
           .sort((item: IContactStateItem) => {
             return item.selected ? -1 : 1;
           }),
+      };
+    case SET_FETCH_ERROR:
+      return {
+        ...state,
+        fetchErrorMessage: action.payload,
       };
     default:
       return state;

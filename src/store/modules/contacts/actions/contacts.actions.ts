@@ -8,10 +8,18 @@ import type { RootState } from 'src/store/store';
 export const SET_CONTACTS_LOADING = 'SET_CONTACTS_LOADING';
 export const SET_CONTACTS_DATA = 'SET_CONTACTS_DATA';
 export const SET_ITEM_SELECT = 'SET_ITEM_SELECT';
+export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
 
 const setContactsLoading = (payload: boolean): AnyAction => {
   return {
     type: SET_CONTACTS_LOADING,
+    payload,
+  };
+};
+
+const setFetchError = (payload: string): AnyAction => {
+  return {
+    type: SET_FETCH_ERROR,
     payload,
   };
 };
@@ -33,14 +41,14 @@ export const setItemSelect = (payload: { id: string; selected: boolean }): AnyAc
 export const fetchContacts = (): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch: Dispatch<AnyAction>) => {
     dispatch(setContactsLoading(true));
+    dispatch(setFetchError(''));
 
     try {
       const response: IContactInfo[] = await apiData();
 
       dispatch(setContactsData(response));
     } catch (error) {
-      // todo handle error !!!!!!!
-      console.log(`############################## error`);
+      dispatch(setFetchError('An error occured, try again...'));
     } finally {
       dispatch(setContactsLoading(false));
     }

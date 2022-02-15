@@ -15,10 +15,21 @@ const ListWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
+const FetchErrorMessage = styled.span`
+  display: inline-block;
+  color: red;
+  padding: 5px;
+  font-size: 13px;
+`;
+
 const ContactsList = (): ReactElement => {
   const [saveScrollPosition] = useScrollPosition();
   const dispatch = useDispatch();
-  const { items: contacts, loading }: IContactsState = useSelector((state: RootState) => state.contacts);
+  const {
+    items: contacts,
+    loading,
+    fetchErrorMessage,
+  }: IContactsState = useSelector((state: RootState) => state.contacts);
   const load = useCallback(() => {
     saveScrollPosition();
     dispatch(fetchContacts());
@@ -32,11 +43,15 @@ const ContactsList = (): ReactElement => {
     [dispatch, saveScrollPosition],
   );
 
+  const selectedAmount = contacts.reduce((result: any, next: any) => {
+    return next.selected ? result + 1 : result;
+  }, 0);
+
   useEffect(load, [load]);
 
   return (
     <div>
-      <div className="selected">Selected contacts: {'????'}</div>
+      <div className="selected">Selected contacts: {selectedAmount}</div>
       <ListWrapper>
         {contacts.map((contactInfo: IContactStateItem) => (
           <PurePersonInfo
@@ -50,6 +65,7 @@ const ContactsList = (): ReactElement => {
           />
         ))}
       </ListWrapper>
+      {!!fetchErrorMessage && <FetchErrorMessage>{fetchErrorMessage}</FetchErrorMessage>}
       <LoadMoreButton loading={loading} onClick={load} />
     </div>
   );
