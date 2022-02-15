@@ -2,7 +2,7 @@ import mockData from './mockData.json';
 import type { IContactInfo } from 'src/types/contactInfo';
 
 let cursor = -1;
-const size = 1000;
+const size = 10;
 
 function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
