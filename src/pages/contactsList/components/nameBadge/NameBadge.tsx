@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import type { IContactInfo } from 'src/types/contactInfo';
 
 const Wrapper = styled.div`
   display: flex;

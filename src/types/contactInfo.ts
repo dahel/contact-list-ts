@@ -6,5 +6,5 @@ export interface IContactInfo {
 }
 
 export interface IContactStateItem extends IContactInfo {
-  selected: boolean;
+  selected?: boolean;
 }

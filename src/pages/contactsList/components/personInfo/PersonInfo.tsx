@@ -60,11 +60,18 @@ interface IProps {
   firstNameLastName: string;
   jobTitle: string;
   emailAddress: string;
-  selected: boolean;
   onClick: (id: string, selected: boolean) => void;
+  selected?: boolean;
 }
 
-const PersonInfo = ({ firstNameLastName, jobTitle, emailAddress, selected, id, onClick }: IProps): ReactElement => {
+const PersonInfo = ({
+  firstNameLastName,
+  jobTitle,
+  emailAddress,
+  id,
+  onClick,
+  selected = false,
+}: IProps): ReactElement => {
   console.log(`############################## rendering`);
   return (
     <Wrapper selected={selected} onClick={() => onClick(id, selected)}>

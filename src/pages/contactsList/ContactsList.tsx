@@ -43,7 +43,7 @@ const ContactsList = (): ReactElement => {
     [dispatch, saveScrollPosition],
   );
 
-  const selectedAmount = contacts.reduce((result: any, next: any) => {
+  const selectedAmount = contacts.reduce((result: number, next: IContactStateItem) => {
     return next.selected ? result + 1 : result;
   }, 0);
 

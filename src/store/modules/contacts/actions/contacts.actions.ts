@@ -54,5 +54,3 @@ export const fetchContacts = (): ThunkAction<void, RootState, unknown, AnyAction
     }
   };
 };
-
-// 1106069218601d945e15046a50410ecb
