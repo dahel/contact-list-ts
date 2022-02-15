@@ -22,6 +22,13 @@ const FetchErrorMessage = styled.span`
   font-size: 13px;
 `;
 
+const SelectedCounter = styled.div`
+  color: #333333;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 10px 20px 0 0;
+`;
+
 const ContactsList = (): ReactElement => {
   const [saveScrollPosition] = useScrollPosition();
   const dispatch = useDispatch();
@@ -51,7 +58,7 @@ const ContactsList = (): ReactElement => {
 
   return (
     <div>
-      <div className="selected">Selected contacts: {selectedAmount}</div>
+      <SelectedCounter>Selected contacts: {selectedAmount}</SelectedCounter>
       <ListWrapper>
         {contacts.map((contactInfo: IContactStateItem) => (
           <PurePersonInfo

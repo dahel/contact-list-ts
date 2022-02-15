@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -14,15 +14,13 @@ const Wrapper = styled.div`
   font-size: 14px;
 `;
 
-const Letter = styled.div``;
-
 const PersonInfo = ({ name }: { name: string }): ReactElement => {
   const [firstName, lastName] = name.split(' ');
 
   return (
     <Wrapper>
-      {!!firstName && <Letter>{firstName[0].toUpperCase()}</Letter>}
-      {!!lastName && <Letter>{lastName[0].toUpperCase()}</Letter>}
+      {!!firstName && <span>{firstName[0].toUpperCase()}</span>}
+      {!!lastName && <span>{lastName[0].toUpperCase()}</span>}
     </Wrapper>
   );
 };

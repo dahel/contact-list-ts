@@ -1,13 +1,14 @@
 import mockData from './mockData.json';
+import type { IContactInfo } from 'src/types/contactInfo';
 
 let cursor = -1;
-const size = 10;
+const size = 1000;
 
 function delay(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), time));
 }
 
-export default async function apiData() {
+export default async function apiData(): Promise<IContactInfo[]> {
   await delay(1000);
   if (Math.random() > 0.7) {
     throw new Error('Something went wrong');

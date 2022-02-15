@@ -18,29 +18,3 @@ code {
   align-items: space-between;
   margin: 20px 0;
 }
-
-.selected {
-  color: #333333;
-  font-size: 26px;
-  font-weight: 700;
-  margin: 10px 20px 0 0;
-}
-
-.person-info:hover {
-  padding: 30px;
-  border: 2px solid pink;
-}
-
-.firstNameLastName {
-
-}
-
-.jobTitle {
-
-}
-
-.emailAddress {
-  color: #666666;
-  font-size: 14px;
-  line-height: 1.8em;
-}

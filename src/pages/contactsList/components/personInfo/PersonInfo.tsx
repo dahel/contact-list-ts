@@ -72,14 +72,13 @@ const PersonInfo = ({
   onClick,
   selected = false,
 }: IProps): ReactElement => {
-  console.log(`############################## rendering`);
   return (
     <Wrapper selected={selected} onClick={() => onClick(id, selected)}>
       <Row>
         <NameBadge name={firstNameLastName} />
         <Column>
           <Name>{firstNameLastName}</Name>
-          <JobTitle className="jobTitle">{jobTitle}</JobTitle>
+          <JobTitle>{jobTitle}</JobTitle>
         </Column>
       </Row>
       <EmailAddress>{emailAddress}</EmailAddress>
